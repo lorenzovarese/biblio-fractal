@@ -30,9 +30,14 @@ You must remove all XML entities from `dblp.xml` before running any of the other
 - **Purpose**: Removes XML entities from an XML file.
 - **Example Usage**: `python3 entities_remover_script.py`
 
+### `db_single_author_generator.py`
+
+- **Purpose**: Generates a XML file containing articles, proceedings, books, etc., written by a specified author.
+- **Example Usage**: `python3 db_single_author_generator.py "John Doe"`
+
 ### `get_csv_from_single_author_db.py`
 
-- **Purpose**: Generates a CSV file containing articles, proceedings, books, etc., written by a specified author.
+- **Purpose**: Generates a CSV file containing articles, proceedings, books, etc., written by a specified author. It requires previous XML db generation with the db_single_author_generator script.
 - **Example Usage**: `python3 get_csv_from_single_author_db.py "John Doe"`
 
 ### `researcher_occurrences_counter_fast.py`
