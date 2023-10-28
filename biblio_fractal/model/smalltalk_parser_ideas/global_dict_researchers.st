@@ -1,0 +1,1 @@
+allResearchers := Dictionary new.
