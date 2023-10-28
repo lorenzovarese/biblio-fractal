@@ -1,38 +1,43 @@
-# BiblioFractal
-Tools for parsing dblp database
+# BiblioFractal 📚🌀
+Tools for parsing dblp database 🛠️📑
 
-# README for the Tools Folder Codebase
+# README for the Tools Folder Codebase 🗂️
 
-## Overview
+## Overview 📋
 
 This folder contains a set of Python scripts designed for interacting with academic citation data in XML format, specifically from the DBLP database. These scripts provide functionalities such as removing XML entities, generating CSV files based on authors, and counting occurrences of researchers as authors or editors.
 
-## Prerequisites and Setup
+## Prerequisites and Setup ⚙️
 
 1. **Download XML Database**: Download the `dblp.xml` file from the DBLP website at [https://dblp.org/xml/](https://dblp.org/xml/).
 2. **Unzip the File**: Extract the downloaded file and place it in the `input` folder within this codebase.
 3. **Run Entity Remover**: Execute the `entities_remover_script.py` to clean the XML file, producing a new XML file without entities.
 
-### Important Note:
+### Important Note: ⚠️
 
 You must remove all XML entities from `dblp.xml` before running any of the other scripts. Failing to remove entities may result in parsing errors due to limitations in the XML parsing library and the DTD file provided by DBLP.
 
-## General Usage Flow
+## General Usage Flow ⏳
 
 1. Place the unzipped `dblp.xml` file in the `input` folder.
 2. Run `python entities_remover_script.py` to generate `dblp_without_entities.xml`.
 3. Once `dblp_without_entities.xml` is generated, you can use the other scripts in this tools folder.
 
-## Script Summary and Example Usage
+## Script Summary and Example Usage 📜👨‍💻
 
 ### `entities_remover_script.py`
 
 - **Purpose**: Removes XML entities from an XML file.
 - **Example Usage**: `python3 entities_remover_script.py`
 
+### `db_single_author_generator.py`
+
+- **Purpose**: Generates a XML file containing articles, proceedings, books, etc., written by a specified author.
+- **Example Usage**: `python3 db_single_author_generator.py "John Doe"`
+
 ### `get_csv_from_single_author_db.py`
 
-- **Purpose**: Generates a CSV file containing articles, proceedings, books, etc., written by a specified author.
+- **Purpose**: Generates a CSV file containing articles, proceedings, books, etc., written by a specified author. It requires previous XML db generation with the db_single_author_generator script.
 - **Example Usage**: `python3 get_csv_from_single_author_db.py "John Doe"`
 
 ### `researcher_occurrences_counter_fast.py`
