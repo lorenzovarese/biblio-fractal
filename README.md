@@ -8,7 +8,7 @@ Welcome to the DBLP Data Processing Toolkit. This suite of scripts is expertly c
 - `entities_remover.py`: A utility to sanitize XML files by eliminating entities 🧹.
 - `xml_author_extractor.py`: A specialized extractor to sift through the XML file for data associated with a specified author 🔍.
 - `xml_to_json_converter.py`: A converter that transitions author-specific XML records into a structured JSON file 🔄.
-- `main_dblp_script.py`: The orchestrator script, choreographing the transition from XML to JSON.
+- `main_dblp_script.py`: The orchestrator script, handler of the transition from the dblp.xml to final DBs.
 
 ## Getting Started 🚀
 
