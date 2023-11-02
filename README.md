@@ -19,7 +19,7 @@ Welcome to the DBLP Data Processing Toolkit. This suite of scripts is expertly c
 
 ### Setup
 
-Clone the repository to embark on data processing:
+Clone the repository on data processing:
 
 ```bash
 git clone https://github.com/your-username/biblio-fractal.git
@@ -30,13 +30,13 @@ Ensure you have a copy of the `dblp.xml` in the `input` directory before proceed
 
 ## Prerequisites and Setup ⚙️
 
-1. **XML Database Acquisition**: Secure the `dblp.xml` from [DBLP's official repository](https://dblp.org/xml/).
+1. **XML Database Acquisition**: Download the `dblp.xml` from [DBLP's official repository](https://dblp.org/xml/).
 2. **Decompression**: Unzip and house the `dblp.xml` in the `input` folder of this toolkit.
-3. **Entity Removal**: Initiate `entities_remover_script.py` to cleanse the XML file, thus preparing a pristine, entity-free XML file.
+3. **Entity Removal**: Initiate `entities_remover_script.py` to cleanse the XML file, thus preparing a entity-free XML file.
 
 ## Usage 📘
 
-The `main_dblp_script.py` is the maestro of the toolkit and can be invoked with the following incantation:
+The `main_dblp_script.py` is the maestro of the toolkit and can be invoked with the following command:
 
 ```bash
 python main_dblp_script.py "Author Name" [--collaborators]
@@ -59,7 +59,7 @@ python main_dblp_script.py "John Doe" --collaborators
 
 #### `entities_remover.py`
 
-It purges the DBLP XML of entities to avert parsing mishaps.
+It purges the DBLP XML of entities for parsing compatibility.
 
 **Usage:**
 
@@ -79,7 +79,7 @@ python xml_author_extractor.py <author_name> [--collaborators]
 
 #### `xml_to_json_converter.py`
 
-Transmutes the curated XML data for the author into a JSON format.
+Convert the XML data for the author into a JSON format.
 
 **Usage:**
 
@@ -93,11 +93,11 @@ Executing the scripts will yield:
 
 - An XML file scrubbed clean of entities.
 - An author-centric XML file detailing publications.
-- A JSON rendition of the author's bibliography.
+- A JSON with the author's bibliography.
 
 ## Contributing 🤝
 
-Enthusiastic about contributing? Embark on the journey:
+Enthusiastic about contributing?
 
 1. Fork the repository.
 2. Carve out your feature branch (`git checkout -b feature/YourFeature`).
