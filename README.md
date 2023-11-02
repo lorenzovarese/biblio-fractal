@@ -83,7 +83,7 @@ Convert the XML data for the author into a JSON format.
 **Usage:**
 
 ```bash
-python xml_to_json_converter.py <author_name>
+python xml_to_json_converter.py <author_name> [--collaborators]
 ```
 
 ## Output 📦
