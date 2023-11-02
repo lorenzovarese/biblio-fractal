@@ -44,7 +44,7 @@ python main_dblp_script.py "Author Name" [--collaborators]
 ### Arguments
 
 - `author_name` (required): The distinguished name of the author for whom data is to be processed.
-- `--collaborators` (optional): A switch to incorporate the author's collaborators in the output.
+- `--collaborators` (optional): A switch to incorporate the entire dataset related to author that have collaborated at least one time with the author specified in the "Author name" argument.
 
 ### Example
 
