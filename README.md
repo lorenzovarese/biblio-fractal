@@ -32,7 +32,6 @@ Ensure you have a copy of the `dblp.xml` in the `input` directory before proceed
 
 1. **XML Database Acquisition**: Download the `dblp.xml` from [DBLP's official repository](https://dblp.org/xml/).
 2. **Decompression**: Unzip and house the `dblp.xml` in the `input` folder of this toolkit.
-3. **Entity Removal**: Initiate `entities_remover_script.py` to cleanse the XML file, thus preparing a entity-free XML file.
 
 ## Usage 📘
 
