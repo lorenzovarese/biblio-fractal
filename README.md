@@ -1,53 +1,106 @@
 # BiblioFractal 📚🌀
-Tools for parsing dblp database 🛠️📑
+## Tools for parsing the DBLP database 🛠️📑
 
-# README for the Tools Folder Codebase 🗂️
+Welcome to the DBLP Data Processing Toolkit. This suite of scripts is expertly crafted to transform the rich data from the DBLP computer science bibliography into a user-friendly JSON format, prioritizing information pertinent to individual authors. Dive into a toolkit that cleans XML files, selectively extracts an author's publications, considers collaborator data upon request, and seamlessly converts the dataset into JSON.
 
-## Overview 📋
+## Contents 📂
 
-This folder contains a set of Python scripts designed for interacting with academic citation data in XML format, specifically from the DBLP database. These scripts provide functionalities such as removing XML entities, generating CSV files based on authors, and counting occurrences of researchers as authors or editors.
+- `entities_remover.py`: A utility to sanitize XML files by eliminating entities 🧹.
+- `xml_author_extractor.py`: A specialized extractor to sift through the XML file for data associated with a specified author 🔍.
+- `xml_to_json_converter.py`: A converter that transitions author-specific XML records into a structured JSON file 🔄.
+- `main_dblp_script.py`: The orchestrator script, choreographing the transition from XML to JSON.
+
+## Getting Started 🚀
+
+### Prerequisites
+
+- Python 3.x 🐍
+- Terminal or Command-line interface 💻
+
+### Setup
+
+Clone the repository to embark on data processing:
+
+```bash
+git clone https://github.com/your-username/biblio-fractal.git
+cd biblio-fractal
+```
+
+Ensure you have a copy of the `dblp.xml` in the `input` directory before proceeding.
 
 ## Prerequisites and Setup ⚙️
 
-1. **Download XML Database**: Download the `dblp.xml` file from the DBLP website at [https://dblp.org/xml/](https://dblp.org/xml/).
-2. **Unzip the File**: Extract the downloaded file and place it in the `input` folder within this codebase.
-3. **Run Entity Remover**: Execute the `entities_remover_script.py` to clean the XML file, producing a new XML file without entities.
+1. **XML Database Acquisition**: Secure the `dblp.xml` from [DBLP's official repository](https://dblp.org/xml/).
+2. **Decompression**: Unzip and house the `dblp.xml` in the `input` folder of this toolkit.
+3. **Entity Removal**: Initiate `entities_remover_script.py` to cleanse the XML file, thus preparing a pristine, entity-free XML file.
 
-### Important Note: ⚠️
+## Usage 📘
 
-You must remove all XML entities from `dblp.xml` before running any of the other scripts. Failing to remove entities may result in parsing errors due to limitations in the XML parsing library and the DTD file provided by DBLP.
+The `main_dblp_script.py` is the maestro of the toolkit and can be invoked with the following incantation:
 
-## General Usage Flow ⏳
+```bash
+python main_dblp_script.py "Author Name" [--collaborators]
+```
 
-1. Place the unzipped `dblp.xml` file in the `input` folder.
-2. Run `python entities_remover_script.py` to generate `dblp_without_entities.xml`.
-3. Once `dblp_without_entities.xml` is generated, you can use the other scripts in this tools folder.
+### Arguments
 
-## Script Summary and Example Usage 📜👨‍💻
+- `author_name` (required): The distinguished name of the author for whom data is to be processed.
+- `--collaborators` (optional): A switch to incorporate the author's collaborators in the output.
 
-### `entities_remover_script.py`
+### Example
 
-- **Purpose**: Removes XML entities from an XML file.
-- **Example Usage**: `python3 entities_remover_script.py`
+To engage the toolkit for author "John Doe" with collaborators:
 
-### `db_single_author_generator.py`
+```bash
+python main_dblp_script.py "John Doe" --collaborators
+```
 
-- **Purpose**: Generates a XML file containing articles, proceedings, books, etc., written by a specified author.
-- **Example Usage**: `python3 db_single_author_generator.py "John Doe"`
+### Scripts Breakdown
 
-### `get_csv_from_single_author_db.py`
+#### `entities_remover.py`
 
-- **Purpose**: Generates a CSV file containing articles, proceedings, books, etc., written by a specified author. It requires previous XML db generation with the db_single_author_generator script.
-- **Example Usage**: `python3 get_csv_from_single_author_db.py "John Doe"`
+It purges the DBLP XML of entities to avert parsing mishaps.
 
-### `researcher_occurrences_counter_fast.py`
+**Usage:**
 
-- **Purpose**: Counts and prints occurrences of a name as an author or editor in an XML database.
-- **Example Usage**: `python3 researcher_occurrences_counter_fast.py "John Doe"`
+```bash
+python entities_remover.py <input_xml_path> <output_clean_xml_path>
+```
 
-### `researcher_occurrences_with_surrounding_text.py`
+#### `xml_author_extractor.py`
 
-- **Purpose**: Searches for occurrences of an author’s name in an XML database and outputs those occurrences along with surrounding XML text to a file.
-- **Example Usage**: `python3 researcher_occurrences_with_surrounding_text.py "John Doe"`
+This script mines the DBLP XML for records tagged to a given author.
 
-By following the guidelines and example usages provided in this README, you should be able to manipulate and analyze academic citation data in XML format effectively.
+**Usage:**
+
+```bash
+python xml_author_extractor.py <author_name> [--collaborators]
+```
+
+#### `xml_to_json_converter.py`
+
+Transmutes the curated XML data for the author into a JSON format.
+
+**Usage:**
+
+```bash
+python xml_to_json_converter.py <author_name>
+```
+
+## Output 📦
+
+Executing the scripts will yield:
+
+- An XML file scrubbed clean of entities.
+- An author-centric XML file detailing publications.
+- A JSON rendition of the author's bibliography.
+
+## Contributing 🤝
+
+Enthusiastic about contributing? Embark on the journey:
+
+1. Fork the repository.
+2. Carve out your feature branch (`git checkout -b feature/YourFeature`).
+3. Commit your enhancements (`git commit -am 'Add some feature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Craft a Pull Request.
