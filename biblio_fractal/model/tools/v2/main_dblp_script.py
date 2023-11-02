@@ -21,28 +21,32 @@ def main(author_name):
 
     # Step 1: Check for existence of the cleaned XML file and generate it if missing.
     if not os.path.isfile(cleaned_input_file_path):
-        print(f"Starting Step 1: Generating '{cleaned_input_file_path}' as it does not exist.")
+        print(f"\nStarting Step 1: Generating 'dblp_without_entities.xml' as it does not exist...")
         subprocess.run(['python3', 'entities_remover.py', input_file_path, cleaned_input_file_path])
         print("Step 1 Complete: 'dblp_without_entities.xml' generated.")
     else:
         print(f"'{cleaned_input_file_path}' already exists. Moving to the next step.")
 
     # Step 2: Generate the XML file with data specific to the author.
-    print(f"Starting Step 2: Extracting data for author '{author_name}'.")
-    subprocess.run(['python3', 'xml_author_extractor.py', author_name])
+    print(f"\nStarting Step 2: Extracting data for author '{author_name}'.")
+    if args.collaborators:
+        subprocess.run(['python3', 'xml_author_extractor.py', author_name, '--collaborators'])
+    else:
+        subprocess.run(['python3', 'xml_author_extractor.py', author_name])
     print(f"Step 2 Complete: XML file for author '{author_name}' generated.")
 
     # Step 3: Convert the author-specific XML file to JSON format.
-    print(f"Starting Step 3: Converting XML data for author '{author_name}' to JSON.")
+    print(f"\nStarting Step 3: Converting XML data for author '{author_name}' to JSON.")
     subprocess.run(['python3', 'xml_to_json_converter.py', author_name])
     print(f"Step 3 Complete: JSON file for author '{author_name}' is now available at '{author_specific_json_path}'.")
 
-    print("All steps completed successfully.")
+    print("\nAll steps completed successfully.")
 
 if __name__ == "__main__":
     # Setup command-line argument parsing.
     parser = argparse.ArgumentParser(description='Process DBLP data for a specific author.')
     parser.add_argument('author_name', type=str, help='Name of the author to process data for')
+    parser.add_argument('--collaborators', action='store_true', help='Flag to include author\'s collaborators in the output.')
     args = parser.parse_args()
     
     # Execute the main function with the provided author name.
