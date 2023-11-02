@@ -31,6 +31,8 @@ def generate_author_db(file_path, author_name, output_file_path):
                 break  # No need to check other authors for this article/incollection
 
         # Clear the element to save memory
+        while elem.getprevious() is not None:
+            del elem.getparent()[0]
         elem.clear()
 
     # Print the total count of elements found
