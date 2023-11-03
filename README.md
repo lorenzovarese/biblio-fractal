@@ -8,7 +8,7 @@ Welcome to the DBLP Data Processing Toolkit. This suite of scripts is expertly c
 - `entities_remover.py`: A utility to sanitize XML files by eliminating entities 🧹.
 - `xml_author_extractor.py`: A specialized extractor to sift through the XML file for data associated with a specified author 🔍.
 - `xml_to_json_converter.py`: A converter that transitions author-specific XML records into a structured JSON file 🔄.
-- `main_dblp_script.py`: The orchestrator script, choreographing the transition from XML to JSON.
+- `main_dblp_script.py`: The orchestrator script, handler of the transition from the dblp.xml to final DBs.
 
 ## Getting Started 🚀
 
@@ -44,7 +44,7 @@ python main_dblp_script.py "Author Name" [--collaborators]
 ### Arguments
 
 - `author_name` (required): The distinguished name of the author for whom data is to be processed.
-- `--collaborators` (optional): A switch to incorporate the author's collaborators in the output.
+- `--collaborators` (optional): A switch to incorporate the entire dataset related to authors that have collaborated at least one time with the author specified in the "Author name" argument.
 
 ### Example
 
@@ -83,7 +83,7 @@ Convert the XML data for the author into a JSON format.
 **Usage:**
 
 ```bash
-python xml_to_json_converter.py <author_name>
+python xml_to_json_converter.py <author_name> [--collaborators]
 ```
 
 ## Output 📦
