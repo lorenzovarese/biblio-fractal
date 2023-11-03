@@ -2,11 +2,13 @@ import argparse
 import os
 import subprocess
 
-def main(author_name):
+def main(args):
     # Define the workspace and the paths for the input and output folders.
     workspace = os.getcwd()
     input_folder = os.path.join(workspace, "input")
     output_folder = os.path.join(workspace, "output")
+
+    author_name = args.author_name
 
     # Ensure input and output directories exist to avoid file not found errors.
     os.makedirs(input_folder, exist_ok=True)
@@ -37,7 +39,10 @@ def main(author_name):
 
     # Step 3: Convert the author-specific XML file to JSON format.
     print(f"\nStarting Step 3: Converting XML data for author '{author_name}' to JSON.")
-    subprocess.run(['python3', 'xml_to_json_converter.py', author_name])
+    if args.collaborators:
+        subprocess.run(['python3', 'xml_to_json_converter.py', author_name, '--collaborators'])
+    else:
+        subprocess.run(['python3', 'xml_to_json_converter.py', author_name])
     print(f"Step 3 Complete: JSON file for author '{author_name}' is now available at '{author_specific_json_path}'.")
 
     print("\nAll steps completed successfully.")
@@ -50,4 +55,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     # Execute the main function with the provided author name.
-    main(args.author_name)
+    main(args)

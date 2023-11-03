@@ -63,6 +63,7 @@ if __name__ == "__main__":
     # Define the command-line arguments
     parser = argparse.ArgumentParser(description='Converts XML data of a specified author to JSON format.')
     parser.add_argument('author_name', type=str, help='Name of the author to convert data for')
+    parser.add_argument('--collaborators', action='store_true', help='Flag to include author\'s collaborators in the output.')
 
     # Parse the command-line arguments
     args = parser.parse_args()
@@ -72,8 +73,13 @@ if __name__ == "__main__":
     # Get the current working directory
     workspace = os.getcwd()
     # Construct the input and output file paths
-    input_file_path = os.path.join(workspace, "output", f"{author_file_name}_author_db.xml")
-    output_file_path = os.path.join(workspace, "output", f"{author_file_name}_author_db.json")
+
+    if args.collaborators:
+        input_file_path = os.path.join(workspace, "output", f"{author_file_name}_author_db_with_collaborators.xml")
+        output_file_path = os.path.join(workspace, "output", f"{author_file_name}_author_db_with_collaborators.json")
+    else:
+        input_file_path = os.path.join(workspace, "output", f"{author_file_name}_author_db.xml")
+        output_file_path = os.path.join(workspace, "output", f"{author_file_name}_author_db.json")
 
     # Call the function to convert the XML to JSON
     parse_xml_to_json(input_file_path, output_file_path)

@@ -88,11 +88,11 @@ if __name__ == "__main__":
         print("Collecting collaborators...")
         collaborators = collect_collaborators(input_file_path, author_name)
         print(f"Found {len(collaborators)} collaborators.")
-        output_file_path = os.path.join(workspace, "output", f"{author_file_name}_author_db.xml")
+        output_file_path = os.path.join(workspace, "output", f"{author_file_name}_author_db_with_collaborators.xml")
         print(f"Extracting author's data with collaborators...")
         extract_author_data(input_file_path, author_name, collaborators, output_file_path)
     else:
         collaborators = set() # Set of collaborators is empty if the flag is not set
-        output_file_path = os.path.join(workspace, "output", f"{author_file_name}_author_db_with_collaborators.xml")
+        output_file_path = os.path.join(workspace, "output", f"{author_file_name}_author_db.xml")
         print(f"Extracting author's data...")
         extract_author_data(input_file_path, author_name, collaborators, output_file_path)
