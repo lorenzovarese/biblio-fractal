@@ -48,4 +48,5 @@ if __name__ == "__main__":
     workspace = os.getcwd()
     input_file_path = os.path.join(workspace, "input", "dblp_without_entities.xml")
     output_file_path = os.path.join(workspace, "output", f"all_author_db.xml")
+    print("WARNING - Unstable versione (extract all author data without filtering)")
     extract_data(input_file_path, output_file_path)
