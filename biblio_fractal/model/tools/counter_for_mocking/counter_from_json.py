@@ -1,7 +1,7 @@
 import json
 
 # Path to the JSON file
-file_path = 'path/to/db.json'
+file_path = 'MicheleLanza_author_db.json'
 
 # Reading the JSON data from the file
 with open(file_path, 'r') as file:
