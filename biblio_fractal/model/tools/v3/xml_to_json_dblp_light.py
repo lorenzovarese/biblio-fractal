@@ -55,5 +55,5 @@ def parse_xml_to_json(input_file_path, output_file_path):
 if __name__ == "__main__":
     workspace = os.getcwd()
     input_file_path = os.path.join(workspace, "input", "dblp_without_entities.xml")
-    output_file_path = os.path.join(workspace, "light_db_dblp.xml")
+    output_file_path = os.path.join(workspace, "light_db_dblp.json")
     parse_xml_to_json(input_file_path, output_file_path)
