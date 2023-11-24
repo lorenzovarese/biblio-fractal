@@ -32,13 +32,16 @@ def parse_xml_to_json(input_file_path, output_file_path):
 
         # Only proceed if authors list is not empty
         if authors:
+            url_parts = elem.find('url').text.split('/') if elem.find('url') is not None else []
+            venue_edition = url_parts[3].split('.')[0] if len(url_parts) > 3 else ""
+            
             record_dict = {
                 'dblp_tag': elem.tag,
                 'key_parts': elem.get('key').split("/") if elem.get('key') else [],
                 'authors': authors,
                 'title': elem.find('title').text if elem.find('title') is not None else "",
                 'year': int(elem.find('year').text) if elem.find('year') is not None else "",
-                'url': elem.find('url').text if elem.find('url') is not None else ""
+                'v_edition': venue_edition
             }
 
             # Append the record dictionary to the list of all records
